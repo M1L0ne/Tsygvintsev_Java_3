@@ -56,4 +56,9 @@ public class Gun {
             System.out.println("Клац!");
         }
     }
+
+    @Override
+    public String toString() {
+        return ("Пистолет с максимумом " + maxBullets + " патронов, заряженный на " + bullets + " пуль.");
+    }
 }
