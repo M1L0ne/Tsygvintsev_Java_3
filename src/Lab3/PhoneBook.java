@@ -92,7 +92,7 @@ public class PhoneBook {
         return contactsArray;
     }
 
-    public String[] contactSearch (String namePart) {
+    public String[] contactSearch(String namePart) {
         String[] foundContacts = new String[contacts.size()];
         int i = 0;
         String name;

@@ -2,7 +2,11 @@ package Lab3;
 
 public class Gun {
     private final int maxBullets;
-    private int bullets;
+    protected int bullets;
+
+    public Gun() {
+        this.maxBullets = 30;
+    }
 
     public Gun(int maxBullets) {
         this.maxBullets = maxBullets;

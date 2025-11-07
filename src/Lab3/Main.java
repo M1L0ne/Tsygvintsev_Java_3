@@ -26,7 +26,7 @@ public class Main {
                         int bullets = sc.nextInt();
                         Gun gun = new Gun(bullets);
                         do {
-                            System.out.println("1 - выстрел, 2 - перезарядка, 3 - разрядка, 4 - узнать кол-во патронов," +
+                            System.out.println("Введите действие: 1 - выстрел, 2 - перезарядка, 3 - разрядка, 4 - узнать кол-во патронов," +
                                     " 5 - узнать макс. кол-во патронов, 6 - узнать если пистолет заряжен, 0 - выйти.");
                             choice = sc.nextInt();
                             switch (choice) {
@@ -86,10 +86,9 @@ public class Main {
                         PhoneBook phoneBook = new PhoneBook();
 
                         do {
-                            System.out.println("Выберите действие: 1 - добавить новую пару 'телефон - имя', 2 - удалить пару, 3 - получить пару," +
+                            System.out.println("Введите действие: 1 - добавить новую пару 'телефон - имя', 2 - удалить пару, 3 - получить пару," +
                                     " 4 - вывести все пары, 5 - проверить наличие телефона или имени, 6 - узнать кол-во контактов, 7 - получить ... в виде массива," +
                                     " 8 - получить массив всех имён, 0 - выйти");
-
 
                             choice = sc.nextInt();
 
@@ -163,6 +162,72 @@ public class Main {
                         } while (choice != -1);
                         break;
                     case 4:
+                        Automate automate;
+                        System.out.println("Введите через пробел максимальное число патронов, скорострельность. Можно не вводить ничего или ввести только 1 параметр:");
+                        sc.nextLine();
+
+                        int[] automateParams;
+
+                        String input = sc.nextLine().trim();
+
+                        if (input.isEmpty()) {
+                            automateParams = new int[0];
+                        }
+                        else {
+                            String[] automateParamsString = input.split(" ");
+
+                            automateParams = new int[automateParamsString.length];
+
+                            try {
+                                for (int i = 0; i < automateParamsString.length; i++) {
+                                    automateParams[i] = Integer.parseInt(automateParamsString[i]);
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Ошибка: введены не числа!");
+                                return;
+                            }
+                        }
+
+                        switch (automateParams.length) {
+                            case 0:
+                                automate = new Automate();
+                                break;
+                            case 1:
+                                automate = new Automate(automateParams[0]);
+                                break;
+                            case 2:
+                                automate = new Automate(automateParams[0], automateParams[1]);
+                                break;
+                            default:
+                                System.out.println("Ошибка: введено большее число параметров");
+                                return;
+                        }
+
+                        do {
+                            System.out.println("Выберите действие: 1 - стрелять, 2 - стрелять N секунд, 3 - перезарядить, -1 - выход");
+                            choice = sc.nextInt();
+
+                            switch (choice) {
+                                case 1:
+                                    automate.fire();
+                                    break;
+                                case 2:
+                                    System.out.println("Введите сколько секунд будет стрелять автомат:");
+                                    int seconds = sc.nextInt();
+                                    automate.longFire(seconds);
+                                    break;
+                                case 3:
+                                    System.out.println("Введите число патронов для перезарядки:");
+                                    int reloadBullets = sc.nextInt();
+                                    returnBullets = automate.reload(reloadBullets);
+                                    System.out.println("Вам вернулась " + returnBullets + " пуля.");
+                                    break;
+                                case -1:
+                                    System.out.println("Выход...");
+                                default:
+                                    System.out.println("Ошибка: введено число вне диапазона");
+                            }
+                        } while (choice != -1);
                         break;
                     case 5:
                         break;
