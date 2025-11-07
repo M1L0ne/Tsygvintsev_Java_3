@@ -8,6 +8,9 @@ public class Main {
     public static void main(String[] args) {
         int taskNum = 0;
         int returnBullets = 0;
+        String contactName = "";
+        String result = "";
+        String[] arrResult;
 
         System.out.println("Для выхода введите '-1'");
         do {
@@ -84,8 +87,8 @@ public class Main {
 
                         do {
                             System.out.println("Выберите действие: 1 - добавить новую пару 'телефон - имя', 2 - удалить пару, 3 - получить пару," +
-                                    ", 4 - вывести все пары, 5 - проверить наличие телефона или имени, 6 - узнать кол-во контактов, 7 - получить все пары в виде массива," +
-                                    ", 8 - получить массив всех имён, 0 - выйти");
+                                    " 4 - вывести все пары, 5 - проверить наличие телефона или имени, 6 - узнать кол-во контактов, 7 - получить ... в виде массива," +
+                                    " 8 - получить массив всех имён, 0 - выйти");
 
 
                             choice = sc.nextInt();
@@ -95,24 +98,63 @@ public class Main {
                                     System.out.println("Введите через пробел телефон и имя:");
                                     sc.nextLine();
                                     String[] newContact = sc.nextLine().split(" ");
-                                    String result = phoneBook.addContact(newContact[0], newContact[1]);
+                                    result = phoneBook.addContact(newContact[0], newContact[1]);
                                     if (result != null) {
                                         System.out.println("Старый телефон: " + result);
                                     }
                                     break;
                                 case 2:
+                                    System.out.println("Введите имя контакта:");
+                                    sc.nextLine();
+                                    contactName = sc.nextLine();
+                                    phoneBook.removeContact(contactName);
                                     break;
                                 case 3:
+                                    System.out.println("Введите имя контакта:");
+                                    sc.nextLine();
+                                    contactName = sc.nextLine();
+                                    System.out.println(phoneBook.getContact(contactName));
                                     break;
                                 case 4:
+                                    System.out.println(phoneBook);
                                     break;
                                 case 5:
+                                    System.out.println("Введите имя или номер контакта:");
+                                    sc.nextLine();
+                                    String contactNameOrNumber = sc.nextLine();
+                                    System.out.println(phoneBook.checkContact(contactNameOrNumber));
                                     break;
                                 case 6:
+                                    System.out.println("Всего " + phoneBook.countContact() + " контактов.");
                                     break;
                                 case 7:
+                                    System.out.println("Введите 1 - все пары, 2 - все телефоны, 3 - все имена:");
+                                    int arrayChoice = sc.nextInt();
+                                    arrResult = phoneBook.getContactArray(arrayChoice);
+
+                                    if (arrResult.length == 0) {
+                                        System.out.println("Список пуст");
+                                    } else {
+                                        for (String contact : arrResult) {
+                                            System.out.println(contact);
+                                        }
+                                    }
                                     break;
                                 case 8:
+                                    System.out.println("Укажите часть имени:");
+                                    sc.nextLine();
+                                    contactName = sc.nextLine();
+                                    arrResult = phoneBook.contactSearch(contactName);
+
+                                    if (arrResult.length == 0) {
+                                        System.out.println("Список пуст");
+                                    } else {
+                                        for (String contact : arrResult) {
+                                            if (contact != null) {
+                                                System.out.println(contact);
+                                            }
+                                        }
+                                    }
                                     break;
                                 default:
                                     System.out.println("Ошибка: введено число вне диапазона");
