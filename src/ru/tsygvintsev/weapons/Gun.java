@@ -1,6 +1,6 @@
-package Lab3;
+package ru.tsygvintsev.weapons;
 
-public class Gun extends Weapon{
+public class Gun extends Weapon {
     private final int maxBullets;
 
     @Override

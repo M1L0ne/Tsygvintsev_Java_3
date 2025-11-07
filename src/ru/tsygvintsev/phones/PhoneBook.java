@@ -1,4 +1,4 @@
-package Lab3;
+package ru.tsygvintsev.phones;
 
 import java.util.HashMap;
 import java.util.Map;

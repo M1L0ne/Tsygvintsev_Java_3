@@ -1,4 +1,4 @@
-package Lab3;
+package ru.tsygvintsev.names;
 
 public final class Names {
     private final String lastName;

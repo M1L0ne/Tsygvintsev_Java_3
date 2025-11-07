@@ -1,4 +1,4 @@
-package Lab3;
+package ru.tsygvintsev.weapons;
 
 public class Shooter {
     private String name;

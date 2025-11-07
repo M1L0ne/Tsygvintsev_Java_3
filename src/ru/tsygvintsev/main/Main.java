@@ -1,7 +1,12 @@
-package Lab3;
+package ru.tsygvintsev.main;
+
+import ru.tsygvintsev.names.Names;
+import ru.tsygvintsev.phones.PhoneBook;
+import ru.tsygvintsev.weapons.Automate;
+import ru.tsygvintsev.weapons.Gun;
+import ru.tsygvintsev.weapons.Shooter;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -252,8 +257,10 @@ public class Main {
                         shooter3.shoot();
                         break;
                     case 6:
+                        //Не подходит задача
                         break;
                     case 7:
+
                         break;
                     case 8:
                         break;

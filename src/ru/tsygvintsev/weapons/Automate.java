@@ -1,6 +1,6 @@
-package Lab3;
+package ru.tsygvintsev.weapons;
 
-public class Automate extends Gun{
+public class Automate extends Gun {
     private final int speed;
 
     public Automate() {

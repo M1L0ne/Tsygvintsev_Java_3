@@ -1,4 +1,4 @@
-package Lab3;
+package ru.tsygvintsev.weapons;
 
 abstract class Weapon {
     private int ammo;
