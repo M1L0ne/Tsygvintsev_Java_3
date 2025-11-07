@@ -11,19 +11,22 @@ public class Main {
         String contactName = "";
         String result = "";
         String[] arrResult;
+        Scanner sc = new Scanner(System.in);
+        int bullets;
 
         System.out.println("Для выхода введите '-1'");
         do {
             int choice = 0;
             System.out.println("Введите номер задачи (от 1 до 8): ");
-            Scanner sc = new Scanner(System.in);
+            System.out.println("1 - Перезарядка пистолета, 2 - Непустые имена, 3 - Желтые страницы");
+            System.out.println("4 - Автомат, 5 - Лучший стрелок, 6 - Сравнение точек");
             try {
                 taskNum = sc.nextInt();
 
                 switch (taskNum) {
                     case 1:
                         System.out.println("Введите макс. кол-во патронов:");
-                        int bullets = sc.nextInt();
+                        bullets = sc.nextInt();
                         Gun gun = new Gun(bullets);
                         do {
                             System.out.println("Введите действие: 1 - выстрел, 2 - перезарядка, 3 - разрядка, 4 - узнать кол-во патронов," +
@@ -31,12 +34,12 @@ public class Main {
                             choice = sc.nextInt();
                             switch (choice) {
                                 case 1:
-                                    gun.fire();
+                                    gun.shoot();
                                     break;
                                 case 2:
                                     System.out.println("Введите число патронов для перезарядки:");
                                     int reloadBullets = sc.nextInt();
-                                    returnBullets = gun.reload(reloadBullets);
+                                    returnBullets = gun.load(reloadBullets);
                                     System.out.println("Вам вернулась " + returnBullets + " пуля.");
                                     break;
                                 case 3:
@@ -209,7 +212,7 @@ public class Main {
 
                             switch (choice) {
                                 case 1:
-                                    automate.fire();
+                                    automate.shoot();
                                     break;
                                 case 2:
                                     System.out.println("Введите сколько секунд будет стрелять автомат:");
@@ -219,7 +222,7 @@ public class Main {
                                 case 3:
                                     System.out.println("Введите число патронов для перезарядки:");
                                     int reloadBullets = sc.nextInt();
-                                    returnBullets = automate.reload(reloadBullets);
+                                    returnBullets = automate.load(reloadBullets);
                                     System.out.println("Вам вернулась " + returnBullets + " пуля.");
                                     break;
                                 case -1:
@@ -230,6 +233,23 @@ public class Main {
                         } while (choice != -1);
                         break;
                     case 5:
+                        Shooter shooter1 = new Shooter("Стрелок 1");
+                        Shooter shooter2 = new Shooter("Стрелок 2");
+                        Shooter shooter3 = new Shooter("Стрелок 3");
+
+                        Gun shooterGun = new Gun(20);
+                        shooterGun.load(20);
+                        Automate shooterAutomate = new Automate(30);
+                        shooterAutomate.load(10);
+                        shooter2.setWeapon(shooterGun);
+                        shooter3.setWeapon(shooterAutomate);
+
+                        System.out.println("1 стрелок:");
+                        shooter1.shoot();
+                        System.out.println("2 стрелок:");
+                        shooter2.shoot();
+                        System.out.println("3 стрелок:");
+                        shooter3.shoot();
                         break;
                     case 6:
                         break;

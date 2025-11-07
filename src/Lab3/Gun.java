@@ -1,14 +1,24 @@
 package Lab3;
 
-public class Gun {
+public class Gun extends Weapon{
     private final int maxBullets;
-    protected int bullets;
+
+    @Override
+    public void shoot() {
+        if (getAmmo()) {
+            System.out.println("Бах!");
+        } else {
+            System.out.println("Клац!");
+        }
+    }
 
     public Gun() {
+        super(0);
         this.maxBullets = 30;
     }
 
     public Gun(int maxBullets) {
+        super(0);
         this.maxBullets = maxBullets;
     }
 
@@ -16,34 +26,35 @@ public class Gun {
         System.out.println("Максимальное кол-во патронов = " + maxBullets);
     }
 
-    public int reload (int bullets) {
-        if (bullets < 0) {
+    @Override
+    public int load(int ammo) {
+        if (ammo < 0) {
             System.out.println("Не может быть отрицательного числа патронов.");
             return 0;
         }
 
-        if (bullets > maxBullets) {
-            this.bullets = maxBullets;
-            return bullets - maxBullets;
+        if (ammo > maxBullets) {
+            super.load(maxBullets);
+            return ammo - maxBullets;
         }
 
-        this.bullets = bullets;
+        super.load(ammo);
 
         return 0;
     }
 
     public int unload () {
-        int returnBullets = this.bullets;
-        this.bullets = 0;
+        int returnBullets = ammo();
+        load(0);
         return returnBullets;
     }
 
     public void getBullets () {
-        System.out.println("Сейчас в пистолете " + this.bullets + " патронов.");
+        System.out.println("Сейчас в пистолете " + ammo() + " патронов.");
     }
 
     public void isLoaded () {
-        if (bullets > 0) {
+        if (ammo() > 0) {
             System.out.println("Пистолет заряжен.");
         }
         else {
@@ -51,18 +62,8 @@ public class Gun {
         }
     }
 
-    public void fire() {
-        if (bullets > 0) {
-            bullets--;
-            System.out.println("Бах!");
-        }
-        else {
-            System.out.println("Клац!");
-        }
-    }
-
     @Override
     public String toString() {
-        return ("Пистолет с максимумом " + maxBullets + " патронов, заряженный на " + bullets + " пуль.");
+        return ("Пистолет с максимумом " + maxBullets + " патронов, заряженный на " + ammo() + " пуль.");
     }
 }

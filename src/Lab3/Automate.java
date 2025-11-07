@@ -18,15 +18,15 @@ public class Automate extends Gun{
     }
 
     @Override
-    public void fire() {
+    public void shoot() {
         for (int i = 0; i < speed; i++) {
-            super.fire();
+            super.shoot();
         }
     }
 
     public void longFire(int time) {
         for (int i = 0; i < (time*speed); i++) {
-            super.fire();
+            super.shoot();
         }
     }
 }
