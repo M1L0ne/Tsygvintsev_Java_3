@@ -337,7 +337,7 @@ c) С указанием максимального количества пат�
         }
     
         public void longFire(int time) {
-            for (int i = 0; i < (time*speed); i++) {
+            for (int i = 0; i < (time * speed); i++) {
                 super.fire();
             }
         }
