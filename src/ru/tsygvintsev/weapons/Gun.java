@@ -27,34 +27,34 @@ public class Gun extends Weapon {
     }
 
     @Override
-    public int load(int ammo) {
-        if (ammo < 0) {
+    public int load(int bullets) {
+        if (bullets < 0) {
             System.out.println("Не может быть отрицательного числа патронов.");
             return 0;
         }
 
-        if (ammo > maxBullets) {
-            super.load(maxBullets);
-            return ammo - maxBullets;
+        if (bullets > maxBullets) {
+            ammo = maxBullets;
+            return bullets - maxBullets;
         }
 
-        super.load(ammo);
+        ammo = bullets;
 
         return 0;
     }
 
     public int unload () {
-        int returnBullets = ammo();
-        load(0);
+        int returnBullets = ammo;
+        ammo = 0;
         return returnBullets;
     }
 
     public void getBullets () {
-        System.out.println("Сейчас в пистолете " + ammo() + " патронов.");
+        System.out.println("Сейчас в пистолете " + ammo + " патронов.");
     }
 
     public void isLoaded () {
-        if (ammo() > 0) {
+        if (ammo > 0) {
             System.out.println("Пистолет заряжен.");
         }
         else {
@@ -64,6 +64,6 @@ public class Gun extends Weapon {
 
     @Override
     public String toString() {
-        return ("Пистолет с максимумом " + maxBullets + " патронов, заряженный на " + ammo() + " пуль.");
+        return ("Пистолет с максимумом " + maxBullets + " патронов, заряженный на " + ammo + " пуль.");
     }
 }

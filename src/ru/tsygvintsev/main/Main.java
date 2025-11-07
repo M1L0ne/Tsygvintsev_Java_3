@@ -2,15 +2,20 @@ package ru.tsygvintsev.main;
 
 import ru.tsygvintsev.names.Names;
 import ru.tsygvintsev.phones.PhoneBook;
-import ru.tsygvintsev.weapons.Automate;
-import ru.tsygvintsev.weapons.Gun;
-import ru.tsygvintsev.weapons.Shooter;
+import ru.tsygvintsev.weapons.*;
+import static java.lang.Integer.parseInt;
+import static java.lang.Math.pow;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        if (args.length == 2) {
+            System.out.println(power(args[0], args[1]));
+            return;
+        }
+
         int taskNum = 0;
         int returnBullets = 0;
         String contactName = "";
@@ -275,5 +280,11 @@ public class Main {
                 System.out.println("Ошибка: введено не число");
             }
         } while (taskNum != -1);
+    }
+
+    public static double power(String xString, String yString) {
+        int x = parseInt(xString);
+        int y = parseInt(yString);
+        return pow(x,y);
     }
 }
