@@ -10,7 +10,7 @@ public class PhoneBook {
         this.contacts = new HashMap<>();
     }
 
-    public String addContact (String phoneNumber, String name) {
+    public String addContact(String phoneNumber, String name) {
         String previousNumber = null;
 
         for (Map.Entry<String, String> entry: contacts.entrySet()) {

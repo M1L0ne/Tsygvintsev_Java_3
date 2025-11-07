@@ -3,15 +3,6 @@ package ru.tsygvintsev.weapons;
 public class Gun extends Weapon {
     private final int maxBullets;
 
-    @Override
-    public void shoot() {
-        if (getAmmo()) {
-            System.out.println("Бах!");
-        } else {
-            System.out.println("Клац!");
-        }
-    }
-
     public Gun() {
         super(0);
         this.maxBullets = 30;
@@ -22,8 +13,17 @@ public class Gun extends Weapon {
         this.maxBullets = maxBullets;
     }
 
-    public void getMaxBullets () {
-        System.out.println("Максимальное кол-во патронов = " + maxBullets);
+    public int getMaxBullets () {
+        return maxBullets;
+    }
+
+    @Override
+    public void shoot() {
+        if (getAmmo()) {
+            System.out.println("Бах!");
+        } else {
+            System.out.println("Клац!");
+        }
     }
 
     @Override
@@ -43,22 +43,21 @@ public class Gun extends Weapon {
         return 0;
     }
 
-    public int unload () {
+    public int unload() {
         int returnBullets = ammo;
         ammo = 0;
         return returnBullets;
     }
 
-    public void getBullets () {
-        System.out.println("Сейчас в пистолете " + ammo + " патронов.");
+    public int getBullets() {
+        return ammo;
     }
 
-    public void isLoaded () {
+    public boolean isLoaded() {
         if (ammo > 0) {
-            System.out.println("Пистолет заряжен.");
-        }
-        else {
-            System.out.println("Пистолет разряжен.");
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -19,8 +19,7 @@ public class Shooter {
     public void shoot() {
         if (this.weapon != null) {
             weapon.shoot();
-        }
-        else {
+        } else {
             System.out.println("не могу участвовать в перестрелке");
         }
     }

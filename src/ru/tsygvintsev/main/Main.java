@@ -3,6 +3,7 @@ package ru.tsygvintsev.main;
 import ru.tsygvintsev.names.Names;
 import ru.tsygvintsev.phones.PhoneBook;
 import ru.tsygvintsev.weapons.*;
+
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.pow;
 
@@ -57,13 +58,21 @@ public class Main {
                                     System.out.println("Вам вернулось " + returnBullets + " пуль.");
                                     break;
                                 case 4:
-                                    gun.getBullets();
+                                    bullets = gun.getBullets();
+                                    System.out.println("Сейчас в пистолете " + bullets + " патронов.");
                                     break;
                                 case 5:
-                                    gun.getMaxBullets();
+                                    int maxBullets = gun.getMaxBullets();
+                                    System.out.println("Максимальное кол-во патронов = " + maxBullets);
                                     break;
                                 case 6:
-                                    gun.isLoaded();
+                                    boolean isGunLoaded = gun.isLoaded();
+                                    if (isGunLoaded) {
+                                        System.out.println("Пистолет заряжен.");
+                                    }
+                                    else {
+                                        System.out.println("Пистолет разряжен.");
+                                    }
                                     break;
                                 case -1:
                                     System.out.println("В меню...");
@@ -264,11 +273,6 @@ public class Main {
                     case 6:
                         //Не подходит задача
                         break;
-                    case 7:
-
-                        break;
-                    case 8:
-                        break;
                     case -1:
                         System.out.println("Выход...");
                         break;
@@ -285,6 +289,6 @@ public class Main {
     public static double power(String xString, String yString) {
         int x = parseInt(xString);
         int y = parseInt(yString);
-        return pow(x,y);
+        return pow(x, y);
     }
 }

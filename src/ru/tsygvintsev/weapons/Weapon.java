@@ -7,7 +7,7 @@ abstract class Weapon {
         if(ammo<0) throw new RuntimeException();
         this.ammo = ammo;
     }
-    abstract void shoot();
+    public abstract void shoot();
     public int ammo() {return ammo;}
     public boolean getAmmo() {
         if(ammo==0) return false;
