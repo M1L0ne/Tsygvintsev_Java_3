@@ -1,34 +1,49 @@
 package Lab3;
 
-public class Names {
-    private String lastName;
+public final class Names {
+    private final String lastName;
     private final String firstName;
-    private String patronymic;
+    private final String patronymic;
 
     public Names(String firstName) {
+        if (firstName == null || firstName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Имя не может быть пустым");
+        }
         this.firstName = firstName;
+        this.lastName = null;
+        this.patronymic = null;
     }
 
     public Names(String firstName, String lastName) {
+        if ((firstName == null || firstName.trim().isEmpty()) &&
+                (lastName == null || lastName.trim().isEmpty())) {
+            throw new IllegalArgumentException("Хотя бы один параметр должен быть заполнен");
+        }
         this.firstName = firstName;
         this.lastName = lastName;
+        this.patronymic = null;
     }
 
     public Names(String firstName, String lastName, String patronymic) {
-        this.lastName = lastName;
+        if ((firstName == null || firstName.trim().isEmpty()) &&
+                (lastName == null || lastName.trim().isEmpty()) &&
+                (patronymic == null || patronymic.trim().isEmpty())) {
+            throw new IllegalArgumentException("Хотя бы один параметр должен быть заполнен");
+        }
         this.firstName = firstName;
+        this.lastName = lastName;
         this.patronymic = patronymic;
     }
 
     @Override
     public String toString() {
-        if (lastName == null){
-            lastName = "";
+        String result = firstName;
+        if (lastName != null && !lastName.isEmpty()) {
+            result += " " + lastName;
         }
-        if (patronymic == null){
-            patronymic = "";
+        if (patronymic != null && !patronymic.isEmpty()) {
+            result += " " + patronymic;
         }
-
-        return (firstName + " " + lastName + " " + patronymic).trim();
+        return result;
     }
 }

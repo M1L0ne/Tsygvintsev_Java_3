@@ -8,9 +8,10 @@ public class Main {
     public static void main(String[] args) {
         int taskNum = 0;
         int returnBullets = 0;
-        int action = 0;
+
         System.out.println("Для выхода введите '-1'");
         do {
+            int choice = 0;
             System.out.println("Введите номер задачи (от 1 до 8): ");
             Scanner sc = new Scanner(System.in);
             try {
@@ -21,11 +22,11 @@ public class Main {
                         System.out.println("Введите макс. кол-во патронов:");
                         int bullets = sc.nextInt();
                         Gun gun = new Gun(bullets);
-                        System.out.println("1 - выстрел, 2 - перезарядка, 3 - разрядка, 4 - узнать кол-во патронов," +
-                                " 5 - узнать макс. кол-во патронов, 6 - узнать если пистолет заряжен, 0 - выйти.");
                         do {
-                            action = sc.nextInt();
-                            switch (action) {
+                            System.out.println("1 - выстрел, 2 - перезарядка, 3 - разрядка, 4 - узнать кол-во патронов," +
+                                    " 5 - узнать макс. кол-во патронов, 6 - узнать если пистолет заряжен, 0 - выйти.");
+                            choice = sc.nextInt();
+                            switch (choice) {
                                 case 1:
                                     gun.fire();
                                     break;
@@ -53,12 +54,71 @@ public class Main {
                                     break;
                                 default:
                                     System.out.println("Ошибка: введено число вне диапазона");
+                                    break;
                             }
-                        } while (action != -1);
+                        } while (choice != -1);
                         break;
                     case 2:
+                        System.out.println("Введите через пробел Имя, Отчество, Фамилию:");
+                        sc.nextLine();
+                        String[] fullName = sc.nextLine().split(" ");
+                        switch (fullName.length) {
+                            case 1:
+                                Names name1 = new Names(fullName[0]);
+                                System.out.println(name1);
+                                break;
+                            case 2:
+                                Names name2 = new Names(fullName[0], fullName[1]);
+                                System.out.println(name2);
+                                break;
+                            case 3:
+                                Names name3 = new Names(fullName[0], fullName[1], fullName[2]);
+                                System.out.println(name3);
+                                break;
+                            default:
+                                System.out.println("Ошибка: введено больше, чем нужно");
+                        }
                         break;
                     case 3:
+                        PhoneBook phoneBook = new PhoneBook();
+
+                        do {
+                            System.out.println("Выберите действие: 1 - добавить новую пару 'телефон - имя', 2 - удалить пару, 3 - получить пару," +
+                                    ", 4 - вывести все пары, 5 - проверить наличие телефона или имени, 6 - узнать кол-во контактов, 7 - получить все пары в виде массива," +
+                                    ", 8 - получить массив всех имён, 0 - выйти");
+
+
+                            choice = sc.nextInt();
+
+                            switch (choice) {
+                                case 1:
+                                    System.out.println("Введите через пробел телефон и имя:");
+                                    sc.nextLine();
+                                    String[] newContact = sc.nextLine().split(" ");
+                                    String result = phoneBook.addContact(newContact[0], newContact[1]);
+                                    if (result != null) {
+                                        System.out.println("Старый телефон: " + result);
+                                    }
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    break;
+                                case 6:
+                                    break;
+                                case 7:
+                                    break;
+                                case 8:
+                                    break;
+                                default:
+                                    System.out.println("Ошибка: введено число вне диапазона");
+                                    break;
+                            }
+                        } while (choice != -1);
                         break;
                     case 4:
                         break;

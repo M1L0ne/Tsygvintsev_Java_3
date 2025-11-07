@@ -1,17 +1,28 @@
 package Lab3;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PhoneBook {
-    private ArrayList<String> phoneNumbers = new ArrayList<>();
-    private String phoneNumber;
-    private String name;
+    private Map<String, String> contacts;
 
-    public PhoneBook (String phoneNumber, String name) {
-        this.phoneNumber = phoneNumber;
-        this.name = name;
+    public PhoneBook () {
+        this.contacts = new HashMap<>();
     }
 
+    public String addContact (String phoneNumber, String name) {
+        String previousNumber = null;
+
+        for (Map.Entry<String, String> entry: contacts.entrySet()) {
+            if (entry.getValue().equals(name)) {
+                previousNumber = entry.getKey();
+                contacts.remove(previousNumber);
+            }
+        }
+
+        contacts.put(phoneNumber, name);
+
+        return previousNumber;
+    }
 
 }
