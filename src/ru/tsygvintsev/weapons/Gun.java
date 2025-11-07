@@ -54,11 +54,7 @@ public class Gun extends Weapon {
     }
 
     public boolean isLoaded() {
-        if (ammo > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return ammo > 0;
     }
 
     @Override
