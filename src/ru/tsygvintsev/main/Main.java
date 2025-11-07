@@ -28,7 +28,7 @@ public class Main {
         System.out.println("Для выхода введите '-1'");
         do {
             int choice = 0;
-            System.out.println("Введите номер задачи (от 1 до 8): ");
+            System.out.println("Введите номер задачи (от 1 до 5): ");
             System.out.println("1 - Перезарядка пистолета, 2 - Непустые имена, 3 - Желтые страницы");
             System.out.println("4 - Автомат, 5 - Лучший стрелок");
             try {
