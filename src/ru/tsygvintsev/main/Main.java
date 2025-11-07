@@ -41,7 +41,7 @@ public class Main {
                         Gun gun = new Gun(bullets);
                         do {
                             System.out.println("Введите действие: 1 - выстрел, 2 - перезарядка, 3 - разрядка, 4 - узнать кол-во патронов,");
-                            System.out.println(" 5 - узнать макс. кол-во патронов, 6 - узнать если пистолет заряжен, 0 - выйти.");
+                            System.out.println(" 5 - узнать макс. кол-во патронов, 6 - узнать если пистолет заряжен, -1 - выйти.");
 
                             choice = sc.nextInt();
                             switch (choice) {
@@ -111,7 +111,7 @@ public class Main {
                         do {
                             System.out.println("Введите действие: 1 - добавить новую пару 'телефон - имя', 2 - удалить пару, 3 - получить пару,  4 - вывести все пары,");
                             System.out.println("5 - проверить наличие телефона или имени, 6 - узнать кол-во контактов, 7 - получить ... в виде массива," +
-                                    " 8 - получить массив всех имён, 0 - выйти");
+                                    " 8 - получить массив всех имён, -1 - выйти");
 
                             choice = sc.nextInt();
 
@@ -177,6 +177,9 @@ public class Main {
                                             }
                                         }
                                     }
+                                    break;
+                                case -1:
+                                    System.out.println("Выход...");
                                     break;
                                 default:
                                     System.out.println("Ошибка: введено число вне диапазона");
@@ -280,6 +283,7 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ошибка: введено не число");
+                return;
             }
         } while (taskNum != -1);
     }
